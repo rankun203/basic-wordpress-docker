@@ -1,0 +1,14 @@
+mysql:
+  image: mysql
+  environment:
+    - MYSQL_DATABASE=wordpress
+    - MYSQL_ROOT_PASSWORD=password
+  ports:
+    - 3306
+app:
+  image: wordpress
+  links:
+    - mysql
+  ports:
+    - 3001:80
+  working_dir: /var/www/html
